@@ -1,0 +1,68 @@
+<div class="min-h-screen bg-gray-100 p-4 flex items-center justify-center">
+    <div class="w-full max-w-md">
+      <div class="text-center mb-8">
+        <h1 class="text-2xl font-bold text-blue-800">MiClaro</h1>
+        <p class="text-gray-600 text-sm">Pago con Tarjeta</p>
+      </div>
+  
+      <div class="bg-black/60 backdrop-blur-lg rounded-lg p-6 text-white border border-white/10 shadow-xl">
+        <form (ngSubmit)="processPayment()" class="space-y-4">
+          <!-- Número de Tarjeta -->
+          <div>
+            <label class="block text-gray-200 text-sm font-medium mb-1">Número de tarjeta</label>
+            <input 
+              type="text" 
+              [(ngModel)]="cardNumber" 
+              name="cardNumber"
+              placeholder="1234 5678 9012 3456"
+              maxlength="19"
+              (input)="formatCardNumber()"
+              class="w-full p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-300 transition-all">
+          </div>
+  
+          <!-- Titular -->
+          <div>
+            <label class="block text-gray-200 text-sm font-medium mb-1">Nombre del titular</label>
+            <input 
+              type="text" 
+              [(ngModel)]="cardHolder" 
+              name="cardHolder"
+              placeholder="JUAN PEREZ"
+              class="w-full p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-300 transition-all">
+          </div>
+  
+          <!-- Fecha y CVV -->
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-gray-200 text-sm font-medium mb-1">Vencimiento</label>
+              <input 
+                type="text" 
+                [(ngModel)]="expiryDate" 
+                name="expiryDate"
+                placeholder="MM/AA"
+                maxlength="5"
+                class="w-full p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-300 transition-all">
+            </div>
+            
+            <div>
+              <label class="block text-gray-200 text-sm font-medium mb-1">CVV</label>
+              <input 
+                type="password" 
+                [(ngModel)]="cvv" 
+                name="cvv"
+                placeholder="123"
+                maxlength="3"
+                class="w-full p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-300 transition-all">
+            </div>
+          </div>
+  
+          <button 
+            class="w-full bg-blue-500/90 hover:bg-blue-400 text-white py-3 rounded-md text-sm font-medium transition-all hover:shadow-lg"
+            [disabled]="!isValidForm()"
+            (click)="processPayment()">
+            Pagar S/138.48
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>

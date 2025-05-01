@@ -5,6 +5,8 @@ import { PaymentMethodComponent } from './app/YapeApp/payment-method/payment-met
 import { PaymentConfirmationComponent } from './app/YapeApp/payment-confirmation/payment-confirmation.component';
 import { SearchUserComponent } from './app/YapeApp/search-user/search-user.component';
 import { LoginComponent } from './app/login/login.component';
+import { PaymentMethodSelectorComponent } from './app/YapeApp/payment-method-selector/payment-method-selector.component';
+import { CreditCardPaymentComponent } from './app/YapeApp/credit-card-payment/credit-card-payment.component';
 
   bootstrapApplication(AppComponent, {
     providers: [
@@ -13,6 +15,9 @@ import { LoginComponent } from './app/login/login.component';
         { path: 'search-user', component: SearchUserComponent },
         { path: 'payment', component: PaymentMethodComponent },
         { path: 'confirmation', component: PaymentConfirmationComponent },
+        { path: 'select-method', component: PaymentMethodSelectorComponent },
+        { path: 'credit-card', component: CreditCardPaymentComponent },
+        { path: 'yape-plin', component: PaymentMethodComponent }, // Usar componente existente modificado
         { path: '**', redirectTo: '' }
       ])
     ]

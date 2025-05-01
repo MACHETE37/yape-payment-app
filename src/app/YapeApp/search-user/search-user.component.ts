@@ -55,7 +55,7 @@ export class SearchUserComponent {
   }
 
   goToPayment(amount: number) {
-    this.router.navigate(['/payment'], { 
+    this.router.navigate(['/select-method'], { 
       state: { amount: amount } 
     });
   }

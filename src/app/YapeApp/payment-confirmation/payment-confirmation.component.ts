@@ -20,6 +20,6 @@ export class PaymentConfirmationComponent implements OnInit {
   }
 
   continueShopping() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/search-user']);
   }
 }

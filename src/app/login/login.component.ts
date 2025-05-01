@@ -19,8 +19,8 @@ export class LoginComponent {
 
   onSubmit() {
     // Validación básica (en una app real harías autenticación)
-    if (this.email && this.password) {
+    //if (this.email && this.password) {
       this.router.navigate(['/search-user']);
-    }
+    //}
   }
 }

@@ -16,12 +16,11 @@
 
           <form (ngSubmit)="onSubmit()" class="space-y-4">
             <div>
-              <label class="block text-gray-200 text-sm font-medium mb-1">Correo Electrónico</label>
+              <label class="block text-gray-200 text-sm font-medium mb-1">Codigo de Usuario (DNI / RUC)</label>
               <input 
-                type="email" 
-                [(ngModel)]="email" 
+                type="input"  
                 name="email"
-                placeholder="ejemplo@correo.com"
+                placeholder="42526358"
                 class="w-full p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 placeholder-gray-300 transition-all">
             </div>
 
