@@ -1,0 +1,132 @@
+<div class="min-h-screen bg-gray-50 p-4 max-w-md mx-auto">
+    <!-- Encabezado -->
+    <div class="text-center mb-6">
+      <h1 class="text-xl font-bold text-blue-800">MiClaro</h1>
+      <p class="text-gray-600 text-sm">Registro de nuevo usuario</p>
+    </div>
+  
+    <!-- Formulario -->
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-4">
+      <!-- Tipo de documento -->
+      <div class="flex border rounded-lg overflow-hidden bg-white">
+        <button 
+          type="button"
+          class="flex-1 py-2 text-sm font-medium"
+          [class.bg-blue-600]="documentType === 'dni'"
+          [class.text-white]="documentType === 'dni'"
+          [class.bg-gray-200]="documentType !== 'dni'"
+          (click)="documentType = 'dni'; registerForm.patchValue({documentType: 'dni'})">
+          DNI
+        </button>
+        <button 
+          type="button"
+          class="flex-1 py-2 text-sm font-medium"
+          [class.bg-blue-600]="documentType === 'ruc'"
+          [class.text-white]="documentType === 'ruc'"
+          [class.bg-gray-200]="documentType !== 'ruc'"
+          (click)="documentType = 'ruc'; registerForm.patchValue({documentType: 'ruc'})">
+          RUC
+        </button>
+      </div>
+  
+      <!-- Número de documento -->
+      <div>
+        <label class="block text-gray-700 text-sm font-medium mb-1">
+          Número de {{documentType === 'dni' ? 'DNI' : 'RUC'}}
+        </label>
+        <div class="flex gap-2">
+          <input
+            type="text"
+            formControlName="documentNumber"
+            [maxLength]="docNumberLength"
+            placeholder="{{documentType === 'dni' ? '12345678' : '20123456789'}}"
+            class="flex-1 p-3 border rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-blue-500">
+          <button
+            type="button"
+            class="bg-blue-600 text-white px-4 rounded-md text-sm font-medium disabled:bg-blue-300"
+            [disabled]="!registerForm.get('documentNumber')?.valid"
+            (click)="searchByDocument()">
+            {{isLoading ? 'Buscando...' : 'Buscar'}}
+          </button>
+        </div>
+      </div>
+  
+      <!-- Nombre/Razón Social -->
+      <div>
+        <label class="block text-gray-700 text-sm font-medium mb-1">
+          {{documentType === 'dni' ? 'Nombres Completos' : 'Razón Social'}}
+        </label>
+        <input
+          type="text"
+          formControlName="name"
+          readonly
+          class="w-full p-3 border rounded-md text-sm bg-gray-100">
+      </div>
+  
+      <!-- Número de servicio -->
+      <div>
+        <label class="block text-gray-700 text-sm font-medium mb-1">Número de servicio/cuenta</label>
+        <input
+          type="text"
+          formControlName="serviceNumber"
+          placeholder="Ej: 1234567890"
+          class="w-full p-3 border rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-blue-500">
+      </div>
+  
+      <!-- Correo electrónico -->
+      <div>
+        <label class="block text-gray-700 text-sm font-medium mb-1">Correo electrónico</label>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="ejemplo@correo.com"
+          class="w-full p-3 border rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-blue-500">
+      </div>
+  
+      <!-- Celular -->
+      <div>
+        <label class="block text-gray-700 text-sm font-medium mb-1">Número de celular</label>
+        <input
+          type="tel"
+          formControlName="phone"
+          placeholder="912345678"
+          class="w-full p-3 border rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-blue-500">
+      </div>
+  
+      <!-- Contraseña -->
+      <div>
+        <label class="block text-gray-700 text-sm font-medium mb-1">Contraseña</label>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Mínimo 6 caracteres"
+          class="w-full p-3 border rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-blue-500">
+      </div>
+  
+      <!-- Confirmar contraseña -->
+      <div>
+        <label class="block text-gray-700 text-sm font-medium mb-1">Confirmar contraseña</label>
+        <input
+          type="password"
+          formControlName="confirmPassword"
+          placeholder="Repite tu contraseña"
+          class="w-full p-3 border rounded-md text-sm focus:outline-none focus:ring-1 focus:ring-blue-500">
+        <p *ngIf="registerForm.hasError('notSame')" class="text-red-500 text-xs mt-1">
+          Las contraseñas no coinciden
+        </p>
+      </div>
+  
+      <!-- Botón de registro -->
+      <button
+        type="submit"
+        class="w-full bg-blue-600 text-white py-3 rounded-md text-sm font-medium disabled:bg-blue-300"
+        [disabled]="registerForm.invalid">
+        Registrar cuenta
+      </button>
+    </form>
+  
+    <!-- Enlace a login -->
+    <div class="text-center text-sm mt-4">
+      <p class="text-gray-600">¿Ya tienes una cuenta? <a routerLink="/login" class="text-blue-600">Inicia sesión</a></p>
+    </div>
+  </div>

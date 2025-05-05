@@ -7,6 +7,7 @@ import { SearchUserComponent } from './app/YapeApp/search-user/search-user.compo
 import { LoginComponent } from './app/login/login.component';
 import { PaymentMethodSelectorComponent } from './app/YapeApp/payment-method-selector/payment-method-selector.component';
 import { CreditCardPaymentComponent } from './app/YapeApp/credit-card-payment/credit-card-payment.component';
+import { DniRucRegisterComponent } from './app/dni-ruc-register/dni-ruc-register.component';
 
   bootstrapApplication(AppComponent, {
     providers: [
@@ -18,6 +19,7 @@ import { CreditCardPaymentComponent } from './app/YapeApp/credit-card-payment/cr
         { path: 'select-method', component: PaymentMethodSelectorComponent },
         { path: 'credit-card', component: CreditCardPaymentComponent },
         { path: 'yape-plin', component: PaymentMethodComponent }, // Usar componente existente modificado
+        { path: 'registrar',component:DniRucRegisterComponent},
         { path: '**', redirectTo: '' }
       ])
     ]
