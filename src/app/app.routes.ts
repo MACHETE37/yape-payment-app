@@ -6,6 +6,7 @@ import { PaymentConfirmationComponent } from './YapeApp/payment-confirmation/pay
 import { PaymentMethodSelectorComponent } from './YapeApp/payment-method-selector/payment-method-selector.component';
 import { CreditCardPaymentComponent } from './YapeApp/credit-card-payment/credit-card-payment.component';
 import { DniRucRegisterComponent } from './dni-ruc-register/dni-ruc-register.component';
+import { InicioComponent } from './principal/inicio/inicio.component';
 export const routes: Route[] = [
     { path: '', component: LoginComponent },
     { path: 'search-user', component: SearchUserComponent },
@@ -15,6 +16,7 @@ export const routes: Route[] = [
     { path: 'credit-card', component: CreditCardPaymentComponent },
     { path: 'yape-plin', component: PaymentMethodComponent }, // Usar componente existente modificado
     { path: 'registrar',component:DniRucRegisterComponent},
+    { path: 'inicio', component: InicioComponent },
     { path: '**', redirectTo: '' }
 ];
 
