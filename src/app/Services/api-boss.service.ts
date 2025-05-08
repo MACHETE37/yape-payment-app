@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { firstValueFrom, map, Observable, retry } from 'rxjs';
 import { BossResponse } from '../interfaces/BossResponse';
 
@@ -8,14 +8,14 @@ import { BossResponse } from '../interfaces/BossResponse';
 })
 
 export class ApiBossService {
-
+  private http = inject(HttpClient); // Cambia el constructor
   loading = signal<boolean>(false);
   loadingHttpDialog = signal<boolean>(false);
   public requestParameters:any;
   public endpointParameter:string="";
 
   WebApiUrl = "https://localhost:7293/api";
-  constructor(private http: HttpClient) {
+  constructor() {
 
     }
 
