@@ -30,16 +30,13 @@ export class LoginComponent {
     }
     this._BossServices.endpointParameter="WisphubDatos/Login";
     this._BossServices.requestParameters=body;
-    //const response:BossResponse = await this._BossServices.PostAsync() 
-    //if (response.success)
+    const response:BossResponse = await this._BossServices.PostAsync() 
+    if (response.success)
     {
-      //console.log(response.data);
+      const data = response.data[0]
+      localStorage.setItem('data',JSON.stringify(data))    
       this.router.navigate(['/inicio']);
     }
-
-    // Validación básica (en una app real harías autentu8icación)
-    //if (this.email && this.password) {
-    //}
   }
 
 
