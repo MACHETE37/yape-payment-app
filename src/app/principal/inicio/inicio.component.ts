@@ -6,7 +6,7 @@ import { FooterComponent } from "../components/footer/footer.component";
 import { Cliente } from '../../interfaces/Cliente';
 @Component({
   selector: 'app-inicio',
-  imports: [HeaderComponent, MobileInfoComponent, BalanceComponent, FooterComponent],
+  imports: [HeaderComponent, MobileInfoComponent, BalanceComponent],
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css'
 })

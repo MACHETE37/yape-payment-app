@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Cliente } from '../../interfaces/Cliente';
 
 @Component({
   selector: 'app-search-user',
@@ -35,7 +36,33 @@ export class SearchUserComponent {
       ]
     }
   ];
-  router: Router = new Router;
+
+  jsonObject=signal<any | null>(null);
+
+  constructor(private router: Router) {
+    const data = localStorage.getItem('data');
+    console.log(data)
+    if (data) {
+      this.jsonObject.set(JSON.parse(data));
+    } 
+    // Constructor del componente
+    const Sldo = this.jsonObject()?.saldo;
+    if (Sldo) {
+        this.sampleUsers = [
+        {
+          code: this.jsonObject().id_servicio,
+          razonSocial: this.jsonObject().nombre,
+          direccion: this.jsonObject().direccion,
+          payments: [
+            { mes: this.jsonObject().fecha_corte, saldo: this.jsonObject().saldo }
+          ]
+        }
+      ];
+    }
+    
+
+
+  }
 
   searchUser() {
     const foundUser = this.sampleUsers.find(user => user.code === this.userCode);

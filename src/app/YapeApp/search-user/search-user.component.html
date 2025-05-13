@@ -28,12 +28,12 @@
       <h2 class="text-base font-semibold mb-2">Datos del Usuario</h2>
       <div class="space-y-2 text-sm">
         <div>
-          <p class="text-gray-600">Razón Social:</p>
-          <p class="font-medium">{{ userData.razonSocial }}</p>
+          <p class="text-gray-600">Usuario:</p>
+          <p class="font-medium">{{ jsonObject()?.nombre }}</p>
         </div>
         <div>
           <p class="text-gray-600">Dirección:</p>
-          <p class="font-medium">{{ userData.direccion }}</p>
+          <p class="font-medium">{{ jsonObject()?.direccion }}</p>
         </div>
       </div>
     </div>
